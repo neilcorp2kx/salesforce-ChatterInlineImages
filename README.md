@@ -8,6 +8,10 @@
 
 <br/>
 
+![Demo](ChatterInlineImagesSample.gif)
+
+<br/>
+
 ![License](https://img.shields.io/badge/License-MIT-000000?style=flat-square)
 ![Salesforce API](https://img.shields.io/badge/Salesforce_API-v62.0-00A1E0?style=flat-square&logo=salesforce&logoColor=white)
 ![Deploy](https://img.shields.io/badge/Deploy-sf_CLI-000000?style=flat-square)
