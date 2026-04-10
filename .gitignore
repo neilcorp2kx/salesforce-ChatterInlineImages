@@ -1,0 +1,14 @@
+# Salesforce DX
+.sfdx/
+.sf/
+.vscode/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+*.swp
+*.swo
+.idea/

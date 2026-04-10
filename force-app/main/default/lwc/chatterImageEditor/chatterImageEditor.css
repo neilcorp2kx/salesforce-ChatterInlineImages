@@ -1,0 +1,12 @@
+.publisher-editor {
+    border: 1px solid #dddbda;
+    border-radius: 4px;
+}
+
+.publisher-editor lightning-input-rich-text {
+    min-height: 150px;
+}
+
+.visibility-combobox {
+    width: 16rem;
+}

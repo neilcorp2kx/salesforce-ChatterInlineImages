@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Chatter Image Editor</masterLabel>
+    <description>Rich text editor flow screen component that uploads pasted images as real ContentDocuments so they post inline to the native Chatter feed. Supports optional @mentions.</description>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="recordId"                label="Parent Record Id"          type="String"  description="The record to link uploaded images to and post the FeedItem on. Pass {!recordId} from flow context." required="true"/>
+            <property name="label"                   label="Field Label"               type="String"  default="Comment"/>
+            <property name="placeholder"             label="Placeholder Text"          type="String"  default="Type your comment here. Paste screenshots directly with Ctrl+V..."/>
+            <property name="required"                label="Required"                  type="Boolean" default="false"/>
+            <property name="disableAdvancedTools"    label="Disable Advanced Tools"    type="Boolean" default="false" description="If true, toolbar only shows basic formatting (bold, italic, underline, list, link)."/>
+            <property name="hideVisibilitySelector"  label="Hide Visibility Selector"  type="Boolean" default="false" description="Hide the 'To' dropdown and always use Default Visibility."/>
+            <property name="hideMentionButton"       label="Hide Mention Button"       type="Boolean" default="false" description="Hide the Mention button if you don't want mention support."/>
+            <property name="defaultVisibility"       label="Default Visibility"        type="String"  default="InternalUsers" description="InternalUsers or AllUsers."/>
+            <property name="richTextValue"           label="Rich Text Value"           type="String"  description="Bidirectional. Read this in subsequent flow elements to get the HTML to post."/>
+            <property name="selectedVisibility"      label="Selected Visibility"       type="String"  description="Bidirectional. Read this to get the user's choice (InternalUsers or AllUsers)."/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
