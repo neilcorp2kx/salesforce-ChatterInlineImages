@@ -9,6 +9,7 @@
     </types>
     <types>
         <members>chatterImageEditor</members>
+        <members>chatterImagePublisher</members>
         <name>LightningComponentBundle</name>
     </types>
     <types>

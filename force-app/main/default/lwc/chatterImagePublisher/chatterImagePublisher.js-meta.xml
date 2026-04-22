@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Chatter Image Publisher</masterLabel>
+    <description>Post to Chatter with inline image paste support. Place on a record page to allow pasting screenshots directly into the Chatter feed.</description>
+    <targets>
+        <target>lightning__RecordPage</target>
+        <target>lightning__AppPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage,lightning__AppPage">
+            <property name="placeholder"            label="Placeholder Text"         type="String"  default="Type a message. Paste screenshots directly with Ctrl+V..."/>
+            <property name="disableAdvancedTools"   label="Disable Advanced Toolbar" type="Boolean" default="false"/>
+            <property name="hideVisibilitySelector" label="Hide Visibility Selector" type="Boolean" default="false"/>
+            <property name="hideMentionButton"      label="Hide Mention Button"      type="Boolean" default="false"/>
+            <property name="defaultVisibility"      label="Default Visibility"       type="String"  default="InternalUsers"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

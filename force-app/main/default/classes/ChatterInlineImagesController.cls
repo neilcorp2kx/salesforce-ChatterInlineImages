@@ -63,6 +63,25 @@ public with sharing class ChatterInlineImagesController {
     }
 
     /**
+     * Posts a Chatter feed item with inline images and mentions.
+     * Called directly from the chatterImagePublisher LWC (record page component).
+     */
+    @AuraEnabled
+    public static void postFeedItem(Id parentId, String richTextHtml, String visibility) {
+        if (parentId == null) {
+            throw new AuraHandledException('Parent record Id is required.');
+        }
+        if (String.isBlank(richTextHtml)) {
+            throw new AuraHandledException('Message body is required.');
+        }
+        ChatterInlineImagePoster.Request req = new ChatterInlineImagePoster.Request();
+        req.parentId = parentId;
+        req.richTextHtml = richTextHtml;
+        req.visibility = String.isBlank(visibility) ? 'InternalUsers' : visibility;
+        ChatterInlineImagePoster.postFeedItems(new List<ChatterInlineImagePoster.Request>{ req });
+    }
+
+    /**
      * Returns the display name for a User (005) or CollaborationGroup (0F9).
      * Used by the mention picker in the LWC to resolve the picked record Id
      * into a name for the anchor text. Returns null for unsupported key

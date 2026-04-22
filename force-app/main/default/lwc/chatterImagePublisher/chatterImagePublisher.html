@@ -1,0 +1,88 @@
+<template>
+    <lightning-tabset>
+    <lightning-tab label="Post with Image">
+    <div class="publisher-container slds-p-around_small">
+        <div class="slds-form-element">
+            <div class="slds-form-element__control">
+                <lightning-input-rich-text
+                    value={richTextValue}
+                    onchange={handleRichTextChange}
+                    placeholder={placeholder}
+                    formats={formats}
+                    variant="bottom-toolbar"
+                ></lightning-input-rich-text>
+            </div>
+
+            <template lwc:if={isUploading}>
+                <div class="slds-m-top_xx-small slds-text-body_small slds-text-color_weak">
+                    <lightning-spinner alternative-text="Uploading" size="xx-small" class="slds-m-right_xx-small"></lightning-spinner>
+                    Uploading image...
+                </div>
+            </template>
+
+            <template lwc:if={uploadError}>
+                <div class="slds-m-top_xx-small slds-text-color_error slds-text-body_small">
+                    {uploadError}
+                </div>
+            </template>
+        </div>
+
+        <template lwc:if={showMentionPicker}>
+            <div class="slds-m-top_small slds-box slds-box_xx-small">
+                <lightning-record-picker
+                    label="Mention a user"
+                    placeholder="Search users..."
+                    object-api-name="User"
+                    filter={mentionFilter}
+                    onchange={handleMentionChange}
+                ></lightning-record-picker>
+                <template lwc:if={isResolvingMention}>
+                    <div class="slds-m-top_xx-small slds-text-body_small slds-text-color_weak">
+                        <lightning-spinner alternative-text="Loading" size="xx-small" class="slds-m-right_xx-small"></lightning-spinner>
+                        Adding mention...
+                    </div>
+                </template>
+            </div>
+        </template>
+
+        <div class="slds-m-top_small slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
+            <div class="slds-grid slds-grid_vertical-align-center">
+                <template lwc:if={showVisibilitySelector}>
+                    <span class="slds-m-right_x-small slds-text-body_small">To</span>
+                    <lightning-combobox
+                        variant="label-hidden"
+                        value={currentVisibility}
+                        options={visibilityOptions}
+                        onchange={handleVisibilityChange}
+                        class="visibility-combobox"
+                    ></lightning-combobox>
+                </template>
+            </div>
+            <div class="slds-grid slds-grid_vertical-align-center">
+                <template lwc:if={showMentionButton}>
+                    <lightning-button
+                        label="Mention"
+                        icon-name="utility:user"
+                        class="slds-m-right_x-small"
+                        onmousedown={handleMentionMouseDown}
+                        onclick={handleToggleMentionPicker}
+                    ></lightning-button>
+                </template>
+                <lightning-button
+                    label="Share"
+                    variant="brand"
+                    onclick={handlePost}
+                    disabled={isPosting}
+                ></lightning-button>
+            </div>
+        </div>
+
+        <template lwc:if={postError}>
+            <div class="slds-m-top_small slds-text-color_error slds-text-body_small">
+                {postError}
+            </div>
+        </template>
+    </div>
+    </lightning-tab>
+    </lightning-tabset>
+</template>
